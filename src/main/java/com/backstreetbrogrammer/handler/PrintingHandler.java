@@ -2,18 +2,16 @@ package com.backstreetbrogrammer.handler;
 
 import java.io.IOException;
 
-public class PrintingHandler<S> implements Handler<S> {
-    private final Handler<S> other;
-
+public class PrintingHandler<S> extends DecoratedHandler<S> {
     public PrintingHandler(final Handler<S> other) {
-        this.other = other;
+        super(other);
     }
 
     @Override
     public void handle(final S s) throws IOException {
         System.out.printf("Connected to %s%n", s);
         try {
-            other.handle(s);
+            super.handle(s);
         } finally {
             System.out.printf("Disconnected from %s%n", s);
         }

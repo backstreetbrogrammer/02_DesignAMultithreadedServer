@@ -10,7 +10,11 @@ public class NastyChump {
         final int totalSockets = 10000;
         final Socket[] sockets = new Socket[totalSockets];
         for (int i = 0; i < sockets.length; i++) {
-            sockets[i] = new Socket("localhost", 8081);
+            try {
+                sockets[i] = new Socket("localhost", 8081);
+            } catch (final IOException ie) {
+                ie.printStackTrace();
+            }
         }
         System.out.printf("Total %d sockets connected%n", totalSockets);
         TimeUnit.SECONDS.sleep(100);

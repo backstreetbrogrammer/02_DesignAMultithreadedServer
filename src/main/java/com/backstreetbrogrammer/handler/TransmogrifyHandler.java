@@ -18,6 +18,7 @@ public class TransmogrifyHandler implements Handler<Socket> {
             //in.transferTo(out); // default buffer size is 8192
             int data;
             while ((data = in.read()) != -1) { // read 1 byte at a time and -1 means EOF
+                if (data == '%') throw new IOException("Oopsie");
                 out.write(Util.transmogrify(data));
             }
         }
