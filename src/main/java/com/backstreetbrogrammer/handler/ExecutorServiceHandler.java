@@ -27,6 +27,7 @@ public class ExecutorServiceHandler<S> extends DecoratedHandler<S> {
             super.handle(s);
             return null;
         }) {
+            @Override
             protected void setException(final Throwable th) {
                 exceptionHandler.uncaughtException(Thread.currentThread(), th);
             }

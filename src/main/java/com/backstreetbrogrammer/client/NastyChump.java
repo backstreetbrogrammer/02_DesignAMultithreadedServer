@@ -6,12 +6,12 @@ import java.util.concurrent.TimeUnit;
 
 public class NastyChump {
 
-    public static void main(final String[] args) throws IOException, InterruptedException {
-        final int totalSockets = 10000;
+    public static void main(final String[] args) throws InterruptedException {
+        final int totalSockets = 3000;
         final Socket[] sockets = new Socket[totalSockets];
         for (int i = 0; i < sockets.length; i++) {
             try {
-                sockets[i] = new Socket("localhost", 8081);
+                sockets[i] = new Socket("localhost", 8082);
             } catch (final IOException ie) {
                 ie.printStackTrace();
             }
